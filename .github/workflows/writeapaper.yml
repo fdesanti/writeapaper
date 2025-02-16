@@ -4,6 +4,10 @@
 # Davide Gerosa (2021) https://github.com/dgerosa
 
 name: writeapaper
+
+permissions:
+  contents: write #set github action priviledge
+
 on: [push]
 env:
   # Adjust these if needed
