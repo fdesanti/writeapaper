@@ -5,13 +5,13 @@
 
 name: writeapaper
 on: [push]
+env:
+  # Adjust these if needed
+  DIR: draft
+  FILE: draft
 jobs:
   paper:
     runs-on: ubuntu-latest
-    env:
-      # Edit here with the names of your latex file and directory (can use ".")
-      DIR: draft
-      FILE: draft
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -53,7 +53,7 @@ jobs:
           # Extract the repository name from "owner/repo"
           repo=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
           # Write the new README with the required structure:
-          printf "#%s\nThe compiled pdf is available [here](https://github.com/%s/blob/build/%s.pdf)\n" "$repo" "$GITHUB_REPOSITORY" "$FILE" > README.md
+          printf "# %s\n\nThe compiled pdf is available [here](https://github.com/%s/blob/build/%s.pdf)\n" "$repo" "$GITHUB_REPOSITORY" "$FILE" > README.md
       - name: Commit and push updated README
         run: |
           git config user.name "github-actions"
