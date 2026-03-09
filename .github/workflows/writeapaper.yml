@@ -7,6 +7,8 @@ name: writeapaper
 
 permissions:
   contents: write #set github action priviledge
+  actions: write
+  id-token: write
 
 on: [push]
 env:
